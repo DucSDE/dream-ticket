@@ -4,9 +4,8 @@
     Maven 3.2 above
     also need JAVA for JRE and JVM runtime
 ## Project Setup
-``` {} {
     git clone https://github.com/hhd0502/dream-ticket.git
     cd dream-ticket
     mvn clean install
-    mvn spring-boot:run  
-```
+    mvn spring-boot:run 
+ 
