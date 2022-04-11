@@ -8,38 +8,41 @@
 <div th:fragment="login" class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>
-        <h3>Login</h3>
+        <h3>Đăng nhập</h3>
         <form method="post" action="#">
         	<div class="row">
         		 <label for="username">
-                    Username:
-                    <input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
+                    Tên đăng nhập:
+                    <input type="text" name="username" id="username" placeholder="Tên đăng nhập" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required" />
                 </label>
         	</div>
            
             <div class="row">
             	<label for="password">
-                    Password:
+                    Mật khẩu:
                     <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required" />
                 </label>
             </div>
             <div class="row">
             	<div class="remember">
 					<div>
-						<input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
+						<input type="checkbox" name="remember" value="Remember me"><span>Ghi nhớ đăng nhập</span>
 					</div>
-            		<a href="#">Forget password ?</a>
+            		<a th:href="@{/forget_password}">Quên mật khẩu ?</a>
             	</div>
             </div>
            <div class="row">
-           	 <button type="submit">Login</button>
+           	 <button type="submit">Đăng nhập</button>
            </div>
         </form>
         <div class="row">
-        	<p style="text-align: center">Or via social</p>
-            <div class="social-btn-2">
+        	<p style="text-align: center">Hoặc</p>
+            <div class="social-btn-2 row">
             	<a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
-            	<a class="gg" href="#"><i class="ion-logo-google"></i>Google</a>
+
+            </div>
+            <div class="social-btn-2 row">
+                <a class="gg" href="#"><i class="ion-logo-google"></i>Google</a>
             </div>
         </div>
     </div>
@@ -85,7 +88,6 @@
     </div>
 </div>
 <!--end of signup form popup-->
-
 
 
 	<div th:fragment="script">
