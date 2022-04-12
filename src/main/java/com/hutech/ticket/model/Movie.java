@@ -21,6 +21,12 @@ public class Movie {
 
     private Date dateEnd;
 
+    private String image;
+    
+    private Boolean isShowing;
+    
+    
+
     @ManyToOne()
     @JoinColumn(name = "category_id")
     private MovieCategory category;
@@ -66,6 +72,14 @@ public class Movie {
         this.dateEnd = dateEnd;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Director getDirector() {
         return director;
     }
@@ -81,4 +95,12 @@ public class Movie {
     public void setCategory(MovieCategory category) {
         this.category = category;
     }
+
+	public Boolean getIsShowing() {
+		return isShowing;
+	}
+
+	public void setIsShowing(Boolean isShowing) {
+		this.isShowing = isShowing;
+	}
 }

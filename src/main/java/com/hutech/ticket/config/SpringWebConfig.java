@@ -23,6 +23,10 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Configuration
 public class SpringWebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 
+	private static final String[] RESOURCE_LOCATIONS = {
+			"classpath:/META-INF/resources/", "classpath:/resources/",
+			"classpath:/static/", "classpath:/public/" };
+	
     private ApplicationContext applicationContext;
 
     public SpringWebConfig() {
@@ -41,6 +45,15 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    	if (!registry.hasMappingForPattern("/webjars/**")) {
+    		registry.addResourceHandler("/webjars/**").addResourceLocations(
+    				"classpath:/META-INF/resources/webjars/");
+    	}
+    	if (!registry.hasMappingForPattern("/**")) {
+    		registry.addResourceHandler("/**").addResourceLocations(
+    				RESOURCE_LOCATIONS);
+    	}
+    	
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
