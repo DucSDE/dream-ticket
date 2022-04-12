@@ -233,3 +233,4 @@ README.html
 *.iml
 .idea
 .exercism
+/src/test/**
