@@ -37,8 +37,8 @@
 							</a>
 							<ul class="dropdown-menu level1">
 
-								<li><a href="movielist.html">Phim Đang Chiếu</a></li>
-								<li><a href="movielist.html">Phim Sắp Chiếu</a></li>
+								<li><a th:href="@{/now_showings}">Phim Đang Chiếu</a></li>
+								<li><a th:href="@{/incomings}">Phim Sắp Chiếu</a></li>
 
 							</ul>
 						</li>
@@ -47,9 +47,9 @@
 							Rạp <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="celebritygrid01.html">Tất cả các rạp</a></li>
-								<li><a href="celebritygrid02.html">Rạp Đặc biệt</a></li>
-								<li><a href="celebritylist.html">Rạp sắp mở</a></li>
+								<li><a th:href="@{/all_cinema}">Tất cả các rạp</a></li>
+								<li><a th:href="@{/special_cinema}">Rạp Đặc biệt</a></li>
+								<li><a th:href="@{/coming_cinema}">Rạp sắp mở</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
@@ -57,25 +57,23 @@
 							Tin Tức <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="bloglist.html">Tin mới</a></li>
-								<li><a href="bloggrid.html">Khuyến mãi</a></li>
-								<li class="it-last"><a href="blogdetail.html">Blog</a></li>
+								<li><a th:href="@{/news}">Tin mới</a></li>
+								<li><a th:href="@{/promotion}">Khuyến mãi</a></li>
+								<li class="it-last"><a th:href="@{/blog}">Blog</a></li>
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
-							Cộng đồng <i class="fa fa-angle-down" aria-hidden="true"></i>
+							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" 
+							data-hover="dropdown">
+							Cộng đồng 
 							</a>
 							<ul class="dropdown-menu level1">
-								<li><a href="userfavoritegrid.html">user favorite grid</a></li>
-								<li><a href="userfavoritelist.html">user favorite list</a></li>
-								<li><a href="userprofile.html">user profile</a></li>
-								<li class="it-last"><a href="userrate.html">user rate</a></li>
+								<li><a th:href="@{/forums}">Forums</a></li>
 							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="loginLink"><a href="#">Đăng nhập</a></li>
+						<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
 						<li class="btn signupLink"><a href="#">Đăng ký</a></li>
 					</ul>
 				</div>
@@ -86,6 +84,8 @@
 	    <div class="top-search">
 	    	<select>
 				<option value="united">Phim</option>
+				<option value="united">Đạo diễn</option>
+				<option value="united">Diễn viên</option>
 				<option value="saab">Khác</option>
 			</select>
 			<input type="text" placeholder="Tìm kiếm phim, đạo diễn, diễn viên ...">
