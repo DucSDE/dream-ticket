@@ -32,11 +32,11 @@
 							
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1 mr-1" data-toggle="dropdown" data-hover="dropdown">
+							<a class="btn btn-default dropdown-toggle lv1 mr-1" data-toggle="dropdown" data-hover="dropdown" >
 							Phim  <i class="fa fa-angle-down" aria-hidden="true"></i>
 							</a>
 							<ul class="dropdown-menu level1">
-
+								<li><a th:href="@{/all}">Tất cả phim</a></li>
 								<li><a th:href="@{/now_showings}">Phim Đang Chiếu</a></li>
 								<li><a th:href="@{/incomings}">Phim Sắp Chiếu</a></li>
 
@@ -63,13 +63,9 @@
 							</ul>
 						</li>
 						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" 
-							data-hover="dropdown">
-							Cộng đồng 
+							<a th:href="@{/forums}" class="btn btn-default dropdown-toggle lv1">
+								Forums 
 							</a>
-							<ul class="dropdown-menu level1">
-								<li><a th:href="@{/forums}">Forums</a></li>
-							</ul>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav flex-child-menu menu-right">

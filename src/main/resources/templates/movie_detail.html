@@ -4,12 +4,11 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>Dream Theater Booking</title>
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/plugins.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600'/>
-	<title>Detail Movie</title>
+	<title >[[${detailMovie.title}]] - Đặt vé ngay</title>
 </head>
 <body>
 	<header th:replace="fragments/header-client.html :: header"></header>
@@ -17,11 +16,11 @@
 	<div th:replace="fragments/common.html :: login"></div>
 	<div th:replace="fragments/common.html :: signup"></div>
 
-
 	<div class="hero mv-single-hero">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12"></div>
+				<div class="col-md-12">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -31,7 +30,7 @@
 				<div class="col-md-4 col-sm-12 col-xs-12">
 					<div class="movie-img sticky-sb">
 						<!-- hình gốc mô tả phim-->
-						<img th:src="@{/images/uploads/movie-single.jpg}" alt="">
+						<img th:src="@{'/images/uploads/' + ${detailMovie.image}}" alt="">
 						<div class="movie-btn">
 							<!-- nút xem trailer-->
 							<div class="btn-transform transform-vertical red">
@@ -70,8 +69,9 @@
 				<div class="col-md-8 col-sm-12 col-xs-12">
 					<div class="movie-single-ct main-content">
 						<h1 class="bd-hd">
-							[[${detailMovie.title}]] <span>2015</span>
+							[[${detailMovie.title}]] <span>[[${yearRelease}]]</span>
 						</h1>
+						<!-- section social-->
 						<div class="social-btn">
 							<a href="#" class="parent-btn">
 								<i class="ion-heart"></i> 
@@ -91,18 +91,11 @@
 							<div class="rate">
 								<i class="ion-android-star"></i>
 								<p>
-									<span>8.1</span> /10<br> 
+									<span>[[${detailMovie.rating}]]</span> /10<br> 
 									<span class="rv">56 Reviews</span>
 								</p>
 							</div>
-							<div class="rate-star">
-								<p>Đánh giá phim:</p>
-								<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> 
-								<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> 
-								<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> 
-								<i class="ion-ios-star"></i> <i class="ion-ios-star"></i> 
-								<i class="ion-ios-star-outline"></i>
-							</div>
+							<div th:replace="fragments/common.html :: rate-star(${detailMovie.rating})"></div>
 						</div>
 						
 						<!-- tablayout -->

@@ -1,5 +1,8 @@
 package com.hutech.ticket.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +18,11 @@ public class MovieCategory {
     @Column(length = 1200)
     private String description;
 
-    public MovieCategory(){}
+
+    @ManyToMany(mappedBy = "category")
+    private Set<Movie> movies = new HashSet<>();	
+    
+	public MovieCategory(){}
 
     public MovieCategory(Long id){
         this.Id = id;
@@ -53,4 +60,8 @@ public class MovieCategory {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public Set<Movie> getMovies() {
+		return movies;
+	}
 }

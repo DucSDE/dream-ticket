@@ -4,6 +4,65 @@
 		
 </head>
 <body>
+
+<div th:fragment="rate-star (rate)" class="rate-star">
+	<p>Đánh giá phim:</p>
+	<!-- , nrate = ${#numbers.formatDecimal(rate,0,0)}  -->
+	
+	
+	<th:block th:with="nguyen=${rate} / 1, du=${rate} % 1">	
+		<!-- condition exception out of range [0,10] -->
+		<th:block th:if="${nguyen} <= 10 and ${nguyen} >= 0" >
+			<!-- if has no reviews return full 10 outline star -->
+			<th:block th:if="${nguyen} >= 0.0 and ${nguyen} < 0.5   ">
+				<i th:each="i : ${#numbers.sequence(1, 10)}" class="ion-ios-star-outline"></i>
+			</th:block>
+			
+			<!-- if value of div < 1 -->
+			<th:block th:if="${nguyen} >= 0.5 and ${nguyen} < 1">
+				<i class="ion-ios-star-half"></i>
+				<i th:each="i : ${#numbers.sequence(1, 9)}" class="ion-ios-star-outline"></i>		
+			</th:block>
+			
+			<!-- else if value of div >= 1 -->
+			<th:block th:if="${nguyen} >= 1">
+				<i th:each="i : ${#numbers.sequence(1, nguyen)}" class="ion-ios-star"></i>
+				<th:block >
+					<th:block th:if="${du} != 0">
+						<th:block th:if="${nguyen} < 9">
+							<th:block th:if="${du} >= 0.5 and ${du} < 1">
+								<i class="ion-ios-star-half"></i>
+							</th:block>
+							<th:block th:if="${du} > 0 and ${du} < 0.5">
+								<i class="ion-ios-star-outline"></i>
+							</th:block>
+							<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}" class="ion-ios-star-outline"></i>
+						</th:block>
+						<th:block th:if="${nguyen} >= 9">
+							<th:block th:if="${du} >= 0.5 and ${du} < 1">
+								<i class="ion-ios-star-half"></i>
+							</th:block>
+							<th:block th:if="${du} > 0 and ${du} < 0.5">
+								<i class="ion-ios-star-outline"></i>
+							</th:block>
+						</th:block>
+					</th:block>
+					<th:block th:if="${du} == 0">
+						<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}" class="ion-ios-star-outline"></i>
+					</th:block>
+				</th:block>	
+			</th:block>
+			
+			<!-- end condition check -->
+		</th:block>
+		
+		
+	</th:block>
+	
+	
+	
+</div>
+
 	<!--login form popup-->
 	<div th:fragment="login" class="login-wrapper" id="login-content">
 		<div class="login-content">

@@ -1,7 +1,11 @@
 package com.hutech.ticket.model;
 
 import javax.persistence.*;
+
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Movie {
@@ -25,13 +29,30 @@ public class Movie {
     
     private Boolean isShowing;
     
+    private Float rating;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+    		  name = "movie_writer", 
+    		  joinColumns = @JoinColumn(name = "movie_id"), 
+    		  inverseJoinColumns = @JoinColumn(name = "writer_id"))
+    private Set<Writer> writers = new HashSet<>();
     
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+    		  name = "movie_start", 
+    		  joinColumns = @JoinColumn(name = "movie_id"), 
+    		  inverseJoinColumns = @JoinColumn(name = "star_id"))
+    private Set<Star> stars = new HashSet<>();
 
-    @ManyToOne()
-    @JoinColumn(name = "category_id")
-    private MovieCategory category;
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(
+  		  name = "movie_categories", 
+  		  joinColumns = @JoinColumn(name = "movie_id"), 
+  		  inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<MovieCategory> category = new HashSet<>();
 
-    public Movie() {}
+	public Movie() {}
 
     public Movie(String title, Director director, Date dateStart, Date dateEnd) {
         this.title = title;
@@ -58,6 +79,12 @@ public class Movie {
 
     public Date getDateStart() {
         return dateStart;
+    }
+    
+    public int getYearStart() {
+    	Calendar calendar = Calendar.getInstance();
+    	calendar.setTime(this.dateStart);
+    	return calendar.get(Calendar.YEAR);
     }
 
     public void setDateStart(Date dateStart) {
@@ -88,19 +115,50 @@ public class Movie {
         this.director = director;
     }
 
-    public MovieCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(MovieCategory category) {
-        this.category = category;
-    }
-
 	public Boolean getIsShowing() {
 		return isShowing;
 	}
 
 	public void setIsShowing(Boolean isShowing) {
 		this.isShowing = isShowing;
+	}
+
+	public float getRating() {
+		return rating;
+	}
+	
+	public int getNRating() {
+		return Math.round(rating);
+	}
+	public double getRDRating() {
+		return Math.round(this.rating * 2) / 2.0;
+	}
+
+	public void setRating(float rating) {
+		this.rating = rating;
+	}
+	
+	public Set<Writer> getWriters() {
+		return writers;
+	}
+
+	public void setWriters(Set<Writer> writers) {
+		this.writers = writers;
+	}
+	
+	public Set<MovieCategory> getCategory() {
+		return category;
+	}
+
+	public void setCategory(Set<MovieCategory> category) {
+		this.category = category;
+	}
+	
+	public Set<Star> getStars() {
+		return stars;
+	}
+
+	public void setStars(Set<Star> stars) {
+		this.stars = stars;
 	}
 }

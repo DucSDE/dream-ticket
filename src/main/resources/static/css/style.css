@@ -1872,11 +1872,16 @@ tbody.collapse.in {
   color: #333333;
   white-space: nowrap;
 }
+
+.dropdown-menu > li > a:hover {
+	background-color: #008080;
+}
+
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
   color: #262626;
-  background-color: #f5f5f5;
+  background-color: #008080;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -4099,11 +4104,15 @@ ul {
   height: 100%;
   content: "";
 }
+
+.slider .movie-items .movie-item img {
+	min-height:437px;
+ 	max-width: 285px;	
+}
+
 .movie-items .movie-item img {
   width: 100%;
   height: auto;
-  min-height:437px;
-  max-width: 285px;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
@@ -4212,7 +4221,10 @@ ul {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  display: inline-block;
+  
 }
+
 .cate span a {
   font-family: 'Dosis', sans-serif;
   font-size: 12px;
@@ -4222,15 +4234,19 @@ ul {
 }
 .cate .blue {
   background-color: #1692bb;
+  margin-right:15px;
 }
 .cate .yell {
   background-color: #f5b50a;
+  margin-right:15px;
 }
 .cate .green {
   background-color: #a6bb16;
+  margin-right:15px;
 }
 .cate .orange {
   background-color: #ec5a1a;
+  margin-right:15px;
 }
 .movie_list .movie-item-style-2 img,
 .movie_single .movie-item-style-2 img,
@@ -6081,6 +6097,7 @@ ul {
 .movie-single .movie-single-ct .movie-rate .rate-star i.ion-ios-star {
   color: #f5b50a;
 }
+
 .movie-single .movie-single-ct .tab h3 {
   font-family: 'Dosis', sans-serif;
   font-size: 18px;
@@ -7887,9 +7904,17 @@ header .navbar-default .navbar-nav .dropdown .dropdown-menu.level1 .dropdown-tog
   justify-content: space-between;
 }
 header .navbar-default .navbar-nav .dropdown .dropdown-menu.level1 li a {
-  padding: 10px 30px;
-  color: #020d18;
+  padding: 10px 20px;
+  color: #000000;
 }
+header .navbar-default .navbar-nav .dropdown .dropdown-menu.level1 li:hover {
+	background-color: #CCCCCC;
+}
+
+header .navbar-default .navbar-nav .dropdown.first.open li:hover{
+	background-color: aqua;
+}
+
 header .navbar-default .navbar-nav .dropdown .dropdown-menu.level1 li a i {
   margin-top: 0;
 }
