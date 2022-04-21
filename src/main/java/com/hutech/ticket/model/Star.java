@@ -20,6 +20,8 @@ public class Star {
     @ManyToMany(mappedBy = "stars")
     private Set<Movie> movies = new HashSet<>();
     
+    public Star() {}
+    
 	public Star(String name, Date dob) {
 		super();
 		this.name = name;

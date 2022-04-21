@@ -8,6 +8,6 @@ public class AdminController {
 
     @GetMapping(value = { "/admin" , "/admin/login"})
     public String adminHomepage() {
-        return "admin/index";
+        return "redirect:/adminlte/index.html";
     }
 }

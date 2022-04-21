@@ -22,21 +22,19 @@
 <div class="slider movie-items">
     <div class="container">
         <div class="row">
-            <div class="social-link">
-                <p>Follow us: </p>
-                <a href="#"><i class="ion-social-facebook"></i></a>
-                <a href="#"><i class="ion-social-youtube"></i></a>
-            </div>
             <div class="slick-multiItemSlider">
-				<!-- get movie from database -->
-                <th:block th:each="movie : ${nowShowings} ">
+				
+                <th:block th:each="movie : ${nowShowings} "> 
                     <div class="movie-item">
+                    	
                         <div class="mv-img">
                             <a th:href="@{'/movies/' + ${movie.Id}}">
-                            <img th:src="@{'/images/uploads/' + ${movie.image}}" 
+                            	<img th:src="@{'/images/uploads/' + ${movie.image}}" 
                             	alt="" style="max-width:285px; min-height:437px">
                             </a>
                         </div>
+                        <!-- nút mua vé-->
+						
                         <div class="title-in">
                             <div class="cate">
 	                            <th:block th:each="cate : ${movie.category} " >
@@ -46,8 +44,9 @@
 	                            </th:block>
                             </div>
                             <h6><a th:href="@{'/movies/' + ${movie.Id}}">[[${movie.title}]]</a></h6>
-                            <p><i class="ion-android-star"></i><span>[[${movie.rating}]]</span> /10</p>
+                            <p><i class="ion-android-star"></i><span>[[${movie.getRating()}]]</span> /10</p>
                         </div>
+                        
                     </div>
                 </th:block>
             </div>
@@ -1646,7 +1645,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="sidebar">
+	                <div class="sidebar">
+	                
                     <div class="sb-facebook sb-it">
                         <h4 class="sb-title">Find us on Facebook</h4>
 						<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FitHutech&tabs&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"

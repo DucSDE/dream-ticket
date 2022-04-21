@@ -124,7 +124,7 @@ public class Movie {
 	}
 
 	public float getRating() {
-		return rating;
+		return this.rating;
 	}
 	
 	public int getNRating() {

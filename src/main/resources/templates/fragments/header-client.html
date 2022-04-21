@@ -68,10 +68,23 @@
 							</a>
 						</li>
 					</ul>
-					<ul class="nav navbar-nav flex-child-menu menu-right">
-						<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
-						<li class="btn signupLink"><a href="#">Đăng ký</a></li>
-					</ul>
+					<div th:if="${nav_userLogin} == null">
+						<ul class="nav navbar-nav flex-child-menu menu-right">
+							<li class="btn loginLink"><a href="#">Đăng nhập</a></li>
+							<li class="btn signupLink"><a href="#">Đăng ký</a></li>
+						</ul>
+					</div>
+					<div th:if="${nav_userLogin} != null">
+						<div class="nav navbar-nav flex-child-menu menu-right">
+							<div class="row" style="margin: 0 auto;">
+								<div class="btn label">
+									<h3>Hello [[${userLogin.username}]]</h3>
+									<a th:href="@{/logout}">Đăng xuất</a>
+									
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			<!-- /.navbar-collapse -->
 	    </nav>

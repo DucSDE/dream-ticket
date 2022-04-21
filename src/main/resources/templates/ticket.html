@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/plugins.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/booking.css}" />
+<link rel="stylesheet"
+	href='https://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+<title>[[${detailMovie.title}]] - Đặt vé ngay</title>
+</head>
+<body>
+	<header th:replace="fragments/header-client.html :: header"></header>
+
+	<div th:replace="fragments/common.html :: login"></div>
+	<div th:replace="fragments/common.html :: signup"></div>
+	<div class="hero mv-single-hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+	<div class="page-single movie-single movie_single" style="margin-top:-520px;">
+		<div class="container">
+			<div class="row ipad-width2">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
+					<div class="movie-img sticky-sb">
+						<!-- hình gốc mô tả phim-->
+						<img th:src="@{'/images/uploads/' + ${detailMovie.image}}" alt="">
+
+					</div>
+				</div>
+
+				
+				<div class="col-lg-8 col-md-8 <col-sm-1></col-sm-1>2 col-xs-12" >
+					<!-- Teen phim -->
+					<div class="movie-single-ct main-content">
+						<h1 class="bd-hd" style="padding: 15px 0;">
+							[[${detailMovie.title}]] <span>[[${detailMovie.getYearStart()}]]</span>
+							<a class="btn-order" id="ticket">Đặt vé</a>
+							
+						</h1>
+						
+					</div>
+					<div style="height: 5px; background-color: gray;"></div>
+					<h1 class="title" 
+						style="color: white; margin-top: 15px;">
+						Chọn ghế
+					</h1>
+					<!-- Section Đặt vé background-color: orange; -->
+					<!-- Ngay thang chieu phim -->
+					<div style="background-color: gray;">
+						<ul style="list-style: none; display: flex; flex-wrap: wrap;">
+							<th:block th:each="i: ${#numbers.sequence(1, 100)}">
+							<li>
+								
+									<div class="seat">
+										<span>A[[${i}]]</span>
+									</div>
+								
+							</li>
+							</th:block>	
+						</ul>						   
+					</div>
+					<div id="toast">Đặt vé thành công</div>	
+						
+    				
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- footer section-->
+	<div th:replace="fragments/common.html :: footer"></div>
+
+	<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins.js}"></script>
+	<script type="text/javascript" th:src="@{/js/plugins2.js}"></script>
+	<script type="text/javascript" th:src="@{/js/custom.js}"></script>
+	<script type="text/javascript" th:inline="javascript">
+		$("div.seat > span").on("click", function(e) {
+			$("div.seat.current-seat > span").removeClass("current-seat");
+	  		$(e.target).parent().addClass("current-seat");
+		});
+		$("a#ticket").on("click", function() {
+			
+			var message = "Đặt vé thành công";
+			alert(message);
+			
+			$("div#toast").attr("class","show");
+			var x = document.getElementById("toast");
+
+			  // Add the "show" class to DIV
+			  x.className = "show";
+
+			  // After 3 seconds, remove the show class from DIV
+			  setTimeout(function(){ 
+				  x.className = x.className.replace("show", ""); 
+				  }, 3000);
+			  
+			  window.location = "http://localhost:8088";
+		});
+	</script>
+</body>
+</html>

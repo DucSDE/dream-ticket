@@ -6932,11 +6932,10 @@ p.ceb-single {
 }
 .overlay .login-content h3 {
   font-family: 'Dosis', sans-serif;
-  font-size: 36px;
+  font-size: 18px;
   color: #222222;
   font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 45px;
+  margin-bottom: 15px;
   text-align: center;
 }
 @media (max-width: 767px) {
@@ -6979,9 +6978,7 @@ p.ceb-single {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: uppercase;
   width: 100%;
-  margin-bottom: 25px;
 }
 @media (max-width: 767px) {
   .overlay .login-content label {
@@ -6993,9 +6990,7 @@ p.ceb-single {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: capitalize;
   margin-top: 10px;
-  height: 42px;
   border: 1px solid #e1e1e1;
 }
 .overlay .login-content label input::-webkit-input-placeholder {
@@ -7003,7 +6998,6 @@ p.ceb-single {
   font-size: 14px;
   color: #222222;
   font-weight: bold;
-  text-transform: capitalize;
 }
 .overlay .login-content button {
   font-family: 'Dosis', sans-serif;
@@ -7016,6 +7010,7 @@ p.ceb-single {
   height: 42px;
   width: 100%;
   cursor: pointer;
+  margin-top: 20px;
 }
 .overlay .login-content p {
   color: #222222;
@@ -7075,7 +7070,7 @@ p.ceb-single {
   text-align: center;
   background-size: cover;
   position: relative;
-  padding-top: 200px;
+  padding-top: 120px;
   padding-bottom: 50px;
   display: -webkit-flex;
   display: -moz-box;
@@ -7146,7 +7141,7 @@ p.ceb-single {
   }
 }
 .slider .slick-multiItemSlider {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 .slider .slick-multiItemSlider .slick-list {
   margin-top: 30px;
@@ -7827,7 +7822,7 @@ header {
 }
 header .navbar-default {
   margin-bottom: 0;
-  padding: 30px 0;
+  padding: 10px 0;
   background-color: transparent;
   border: none;
   position: relative;
@@ -7852,7 +7847,7 @@ header .navbar-default .flex-parent {
 @media (min-width: 992px) {
   header .navbar-default .flex-parent {
     display: flex !important;
-    jutify-content: flex-start;
+    justify-content: flex-start;
   }
 }
 header .navbar-default .flex-parent .menu-left {
@@ -8316,3 +8311,6 @@ footer.full-width-ft .ft-copyright {
   font-family: 'Dosis', sans-serif;
   font-weight: 700;
 }
+
+
+

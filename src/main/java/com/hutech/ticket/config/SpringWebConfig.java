@@ -25,7 +25,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
 
 	private static final String[] RESOURCE_LOCATIONS = {
 			"classpath:/META-INF/resources/", "classpath:/resources/",
-			"classpath:/static/", "classpath:/public/" };
+			"classpath:/static/", "classpath:/public/","classpath:/static/adminlte" };
 	
     private ApplicationContext applicationContext;
 
@@ -57,6 +57,7 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter implements Applicat
         registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
+        registry.addResourceHandler("/adminlte/**").addResourceLocations("classpath:/static/adminlte/");
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 

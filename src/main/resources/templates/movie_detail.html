@@ -27,7 +27,7 @@
 	<div class="page-single movie-single movie_single">
 		<div class="container">
 			<div class="row ipad-width2">
-				<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="movie-img sticky-sb">
 						<!-- hình gốc mô tả phim-->
 						<img th:src="@{'/images/uploads/' + ${detailMovie.image}}" alt="">
@@ -53,20 +53,22 @@
 								<div>
 									<a href="#" class="item item-1 yellowbtn"> 
 										<i class="ion-card"></i> 
-										Mua vé ngay
+										Đặt vé ngay
 									</a>
 								</div>
 								<div>
-									<a href="#" class="item item-2 yellowbtn">
+									<a th:href="@{'/booking/' + ${detailMovie.Id}}" class="item item-2 yellowbtn">
 									<i class="ion-card"></i></a>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				</div>
 				
+				
 				<!-- cột bên phải-->
-				<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 					<div class="movie-single-ct main-content">
 						<h1 class="bd-hd">
 							[[${detailMovie.title}]] <span>[[${yearRelease}]]</span>
@@ -86,16 +88,31 @@
 								</div>
 							</div>
 						</div>
+						<div class="row" >
+							<div class="btn-transform transform-vertical" 
+							style="display:block; margin-bottom:15px; margin-top:-30px;width: 90%; margin-left: 10px;">
+								<div>
+									<button class="item item-1 yellowbtn"> 
+										<i class="ion-card"></i> 
+										Đặt vé ngay
+									</button>
+								</div>
+								<div>
+									<a th:href="@{'/booking/' + ${detailMovie.Id}}" class="item item-2 yellowbtn">
+									<i class="ion-card"></i></a>
+								</div>
+							</div>
+						</div>
 						<!-- section đánh giá phim-->
 						<div class="movie-rate">
 							<div class="rate">
 								<i class="ion-android-star"></i>
 								<p>
-									<span>[[${detailMovie.rating}]]</span> /10<br> 
+									<span>[[${ratting}]]</span> /10<br> 
 									<span class="rv">56 Reviews</span>
 								</p>
 							</div>
-							<div th:replace="fragments/common.html :: rate-star(${detailMovie.rating})"></div>
+							<div th:replace="fragments/common.html :: rate-star(${ratting})"></div>
 						</div>
 						
 						<!-- tablayout -->
@@ -1170,11 +1187,12 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 	
-<!-- footer section-->
+	<!-- footer section-->
 	<div th:replace="fragments/common.html :: footer" ></div>
 	
 <script type="text/javascript" th:src="@{/js/jquery.js}"></script>

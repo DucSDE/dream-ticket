@@ -1,84 +1,150 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-		
+
 </head>
 <body>
+	<div th:fragment="modal">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal"
+			data-target="#exampleModalScrollable">Launch demo modal</button>
 
-<div th:fragment="rate-star (rate)" class="rate-star">
-	<p>Đánh giá phim:</p>
-	<!-- , nrate = ${#numbers.formatDecimal(rate,0,0)}  -->
-	
-	
-	<th:block th:with="nguyen=${rate} / 1, du=${rate} % 1">	
-		<!-- condition exception out of range [0,10] -->
-		<th:block th:if="${nguyen} <= 10 and ${nguyen} >= 0" >
-			<!-- if has no reviews return full 10 outline star -->
-			<th:block th:if="${nguyen} >= 0.0 and ${nguyen} < 0.5   ">
-				<i th:each="i : ${#numbers.sequence(1, 10)}" class="ion-ios-star-outline"></i>
-			</th:block>
-			
-			<!-- if value of div < 1 -->
-			<th:block th:if="${nguyen} >= 0.5 and ${nguyen} < 1">
-				<i class="ion-ios-star-half"></i>
-				<i th:each="i : ${#numbers.sequence(1, 9)}" class="ion-ios-star-outline"></i>		
-			</th:block>
-			
-			<!-- else if value of div >= 1 -->
-			<th:block th:if="${nguyen} >= 1">
-				<i th:each="i : ${#numbers.sequence(1, nguyen)}" class="ion-ios-star"></i>
-				<th:block >
-					<th:block th:if="${du} != 0">
-						<th:block th:if="${nguyen} < 9">
-							<th:block th:if="${du} >= 0.5 and ${du} < 1">
-								<i class="ion-ios-star-half"></i>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalScrollable" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalScrollableTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalScrollableTitle">Modal
+							title</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						v
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						v
+						<p>ádasdasdasdasd</p>
+						v
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+						<p>ádasdasdasdasd</p>
+
+						ádasdasdasd
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save
+							changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--rate film-->
+	<div th:fragment="rate-star (rate)" class="rate-star">
+		<p>Đánh giá phim:</p>
+		<!-- , nrate = ${#numbers.formatDecimal(rate,0,0)}  -->
+
+
+		<th:block th:with="nguyen=${rate} / 1, du=${rate} % 1">
+			<!-- condition exception out of range [0,10] -->
+			<th:block th:if="${nguyen} <= 10 and ${nguyen} >= 0">
+				<!-- if has no reviews return full 10 outline star -->
+				<th:block th:if="${nguyen} >= 0.0 and ${nguyen} < 0.5   ">
+					<i th:each="i : ${#numbers.sequence(1, 10)}"
+						class="ion-ios-star-outline"></i>
+				</th:block>
+
+				<!-- if value of div < 1 -->
+				<th:block th:if="${nguyen} >= 0.5 and ${nguyen} < 1">
+					<i class="ion-ios-star-half"></i>
+					<i th:each="i : ${#numbers.sequence(1, 9)}"
+						class="ion-ios-star-outline"></i>
+				</th:block>
+
+				<!-- else if value of div >= 1 -->
+				<th:block th:if="${nguyen} >= 1">
+					<i th:each="i : ${#numbers.sequence(1, nguyen)}"
+						class="ion-ios-star"></i>
+					<th:block>
+						<th:block th:if="${du} != 0">
+							<th:block th:if="${nguyen} < 9">
+								<th:block th:if="${du} >= 0.5 and ${du} < 1">
+									<i class="ion-ios-star-half"></i>
+								</th:block>
+								<th:block th:if="${du} > 0 and ${du} < 0.5">
+									<i class="ion-ios-star-outline"></i>
+								</th:block>
+								<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}"
+									class="ion-ios-star-outline"></i>
 							</th:block>
-							<th:block th:if="${du} > 0 and ${du} < 0.5">
-								<i class="ion-ios-star-outline"></i>
+							<th:block th:if="${nguyen} >= 9">
+								<th:block th:if="${du} >= 0.5 and ${du} < 1">
+									<i class="ion-ios-star-half"></i>
+								</th:block>
+								<th:block th:if="${du} > 0 and ${du} < 0.5">
+									<i class="ion-ios-star-outline"></i>
+								</th:block>
 							</th:block>
-							<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}" class="ion-ios-star-outline"></i>
 						</th:block>
-						<th:block th:if="${nguyen} >= 9">
-							<th:block th:if="${du} >= 0.5 and ${du} < 1">
-								<i class="ion-ios-star-half"></i>
-							</th:block>
-							<th:block th:if="${du} > 0 and ${du} < 0.5">
-								<i class="ion-ios-star-outline"></i>
-							</th:block>
+						<th:block th:if="${du} == 0">
+							<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}"
+								class="ion-ios-star-outline"></i>
 						</th:block>
 					</th:block>
-					<th:block th:if="${du} == 0">
-						<i th:each="i : ${#numbers.sequence(1, 10-nguyen)}" class="ion-ios-star-outline"></i>
-					</th:block>
-				</th:block>	
+				</th:block>
+
+				<!-- end condition check -->
 			</th:block>
-			
-			<!-- end condition check -->
+
+
 		</th:block>
-		
-		
-	</th:block>
-	
-	
-	
-</div>
+
+
+
+	</div>
 
 	<!--login form popup-->
-	<div th:fragment="login" class="login-wrapper" id="login-content">
+	<div th:fragment="login" class="login-wrapper" id="login-content"
+		>
 		<div class="login-content">
 			<a href="#" class="close">x</a>
 			<h3>Đăng nhập</h3>
-			<form method="post" action="#">
+			<form method="POST" th:action="@{/login}" th:object="${userLogin}">
 				<div class="row">
-					<label for="username"> Tên đăng nhập: <input type="text"
+					<label for="username"> Tên đăng nhập: 
+					<input type="text"
 						name="username" id="username" placeholder="Tên đăng nhập"
-						pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{6,20}$" required="required" />
+						th:field="*{username}"
+						required="required" />
 					</label>
 				</div>
 
 				<div class="row">
 					<label for="password"> Mật khẩu: <input type="password"
-						name="password" id="password" placeholder="******"			
+						name="password" id="password" placeholder="******"
+						th:field="*{password}"
 						required="required" />
 					</label>
 				</div>
@@ -92,7 +158,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<button type="submit" th:href="@{/login}">Đăng nhập</button>
+					<button type="submit">Đăng nhập</button>
 				</div>
 			</form>
 			<div class="row">
@@ -101,64 +167,92 @@
 			<div class="row">
 				<div class="row" style="display: relative">
 					<div class="social-btn-2">
-						<a class="fb" href="#"><i class="gg-facebook"></i>
-							Đăng nhập bằng Facebook
-						</a>
+						<a class="fb" href="#"><i class="gg-facebook"></i> Đăng nhập
+							bằng Facebook </a>
 					</div>
 					<div class="social-btn-2">
-						<a class="gg" href="#"><i class="gg-google"></i>
-							Đăng nhập bằng Google
-						</a>
+						<a class="gg" href="#"><i class="gg-google"></i> Đăng nhập
+							bằng Google </a>
 					</div>
 				</div>
 			</div>
 
 		</div>
+		<script type="text/javascript" th:inline="javascript">
+			$("btn.loginLink").on("click", function(e) {
+				$("div#login-content.login-wrapper").show();
+			});
+		</script>
 	</div>
 	<!--end of login form popup-->
 
 	<!--signup form popup-->
-	<div th:fragment="signup" class="login-wrapper" id="signup-content">
+	<div th:fragment="signup" class="login-wrapper" id="signup-content"
+		>
 		<div class="login-content">
 			<a href="#" class="close">x</a>
 			<h3>Đăng ký</h3>
-			<form method="post" action="#">
+			<form method="POST" th:action="@{/register}" th:object="${user}">
 				<div class="row">
-					<label for="username-2"> Tên đăng nhập: <input type="text"
-						name="username" id="username-2" placeholder="tên đăng nhập"
-						pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{6,20}$" required="required" />
+					<label for="username-2"> Tên đăng nhập: 
+						<input type="text"
+						name="username" id="username-2" 
+						
+						th:field="*{username}" 
+						required="required" />
 					</label>
 				</div>
 
 				<div class="row">
-					<label for="email-2"> Email: <input type="password"
-						name="email" id="email-2" placeholder="exsample@gmail.com"
-						pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-						required="required" />
+					<label for="email-2"> Email: 
+					<input type="email"
+						name="email" id="email-2" 
+						placeholder="exsample@gmail.com"
+						required="required" th:field="*{email}"/>
+					</label>
+				</div>
+				<div class="row">
+					<label for="firstName"> First Name: 
+					<input type="text"
+						name="firstName" id="email-2" minlength=2
+						required="required" th:field="*{firstName}"/>
+					</label>
+				</div>
+				<div class="row">
+					<label for="lastName"> Last Name: 
+					<input type="text"
+						name="lastName" id="email-2" minlength=2
+						required="required" th:field="*{lastName}"/>
 					</label>
 				</div>
 				<div class="row">
 					<label for="password-2"> Mật khẩu: 
+					</label>
 					<input type="password"
-						name="password" id="password-2" placeholder=""
-						pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+						name="password" id="password" placeholder="*****"
+						th:field="*{password}"
+						required="required" />
+				</div>
+				<!-- <div class="form-group row">
+				pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+					<label for="repassword-2"> Nhập lại mật khẩu: <input
+						type="password" name="password" id="repassword-2" 
+						placeholder="*****"
+						pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
 						required="required" />
 					</label>
-				</div>
-				<div class="row">
-					<label for="repassword-2"> Nhập lại mật khẩu: 
-					<input
-						type="password" name="password" id="repassword-2" placeholder=""
-						pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-						required="required" />
-					</label>
-				</div>
+				</div> -->
 				<div class="row">
 					<button type="submit">Đăng ký</button>
 				</div>
-				
+
 			</form>
 		</div>
+		<script type="text/javascript" th:inline="javascript">
+			$("btn.signupLink").on("click", function(e) {
+				$("div#signup-content.login-wrapper").show();
+			});
+		</script>
 	</div>
 	<!--end of signup form popup-->
 
@@ -215,6 +309,17 @@
 					</form>
 					<a href="#" class="btn">Đăng ký ngay <i
 						class="ion-ios-arrow-forward ml-2"></i></a>
+					<div class="row">
+						<div class="social-link">
+							<p>Follow us:</p>
+							<a href="#">
+								<i class="ion-social-facebook"></i>
+							</a> 
+							<a href="#">
+								<i	class="ion-social-youtube"></i>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
